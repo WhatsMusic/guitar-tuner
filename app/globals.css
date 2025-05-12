@@ -1,42 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 240, 240, 240;
+  --foreground-rgb: 17, 24, 39; /* gray-900 */
 
-:root {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --card-rgb: 255, 255, 255;
+  --card-border-rgb: 229, 231, 235; /* gray-200 */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background-start-rgb: 31, 41, 55; /* gray-800 */
+    --background-end-rgb: 17, 24, 39; /* gray-900 */
+    --foreground-rgb: 243, 244, 246; /* gray-100 */
+
+    --card-rgb: 55, 65, 81; /* gray-700 */
+    --card-border-rgb: 75, 85, 99; /* gray-600 */
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: var(--font-geist-sans), sans-serif; /* Use Geist Sans from layout */
 }
 
-body {
-  background-color: #1a202c; /* Tailwind's bg-gray-900 */
-  color: #f7fafc; /* Tailwind's text-gray-100 */
-}
-.button {
-    background-color: #38a169; /* Tailwind's bg-green-500 */
-    transition: background-color 0.2s;
-    color: #ffffff; /* Tailwind's text-white */
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
-  .button:hover {
-    background-color: #2f855a; /* Tailwind's bg-green-600 */
+}
+
+/* Custom styles for tuner needle if needed, though Tailwind transforms are preferred */
+.tuner-needle {
+  transition: transform 0.3s ease-out;
+  transform-origin: bottom center;
 }
